@@ -1,5 +1,5 @@
 import type { QuizAnswers, TranslitData } from '@/types';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { robotoCondensed } from '@/utils';
 import IntroPage from './intro';
@@ -22,6 +22,10 @@ export default function Home() {
   const resetQuizResults = () => {
     setQuizAnswers(null);
   };
+
+  useEffect(() => {
+    resetAll();
+  }, []);
 
   return (
     <>
