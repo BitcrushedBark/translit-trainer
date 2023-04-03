@@ -1,1 +1,1 @@
-export { IntroPage } from './intro';
+export { IntroPage as default } from './intro';

@@ -3,9 +3,9 @@ import { useState } from 'react';
 import Head from 'next/head';
 import { robotoCondensed } from '@/utils';
 import * as S from './home.styles';
-import { IntroPage } from './intro';
-import { QuizCardsPage } from './quiz-cards';
-import { QuizResultsPage } from './quiz-results';
+import IntroPage from './intro';
+import QuizCardsPage from './quiz-cards';
+import QuizResultsPage from './quiz-results';
 import { Footer } from '@/components';
 
 export default function Home() {
