@@ -74,7 +74,7 @@ export const Card = styled.form<CardProps & GenericStyleProps>`
   min-width: 10rem;
   outline: 1px solid #1d689e;
   outline-offset: -7px;
-  scroll-margin-top: 15px;
+  position: relative;
 
   ${({ isMobile }) => isMobile ? 'scroll-margin-top: 30px;' : ''}
 
@@ -130,5 +130,11 @@ export const CardInput = styled.input<GenericStyleProps>`
   border-style: none;
 
   ${(props) => applyGenericStyleProps(props)}
+`;
+
+export const ScrollAnchor = styled.div`
+  position: absolute;
+  top: 0;
+  scroll-margin-top: 30px;
 `;
 

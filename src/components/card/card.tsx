@@ -32,9 +32,10 @@ export const Card: React.FC<Props & GenericStyleProps> = ({
   const [prevInputValue, setPrevInputValue] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const cardRef = useRef<HTMLFormElement | null>(null);
+  const scrollAnchorRef = useRef<HTMLDivElement | null>(null);
 
-  const smoothScrollIntoView = (element?: HTMLElement | null) => {
-    element?.scrollIntoView(isMobile ? true :{
+  const scrollIntoView = () => {
+    scrollAnchorRef.current?.scrollIntoView(isMobile ? true :{
       behavior: 'smooth',
       block: 'start',
       inline: 'nearest',
@@ -45,7 +46,7 @@ export const Card: React.FC<Props & GenericStyleProps> = ({
     if (isActive && !isCorrect) {
       inputRef.current?.focus();
       if (enableAutoscroll) {
-        smoothScrollIntoView(cardRef.current);
+        scrollIntoView();
       }
     } else if (!isActive) {
       onDeselect?.();
@@ -103,6 +104,7 @@ export const Card: React.FC<Props & GenericStyleProps> = ({
       isWrong={isWrong}
       isMobile={isMobile}
     >
+      <S.ScrollAnchor ref={scrollAnchorRef} />
       <S.CardText>{text}</S.CardText>
       <S.CardInput
         type="text"
