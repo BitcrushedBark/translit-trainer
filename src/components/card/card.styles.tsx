@@ -73,6 +73,7 @@ export const Card = styled.form<CardProps & GenericStyleProps>`
   min-width: 10rem;
   outline: 1px solid #1d689e;
   outline-offset: -7px;
+  scroll-margin-top: 15px;
 
   ${({ isActive }) => isActive && css`
     transform: scale(1.1);
