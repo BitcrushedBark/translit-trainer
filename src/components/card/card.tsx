@@ -1,6 +1,7 @@
 import type { ChangeEvent, FocusEvent, KeyboardEvent } from 'react';
 import { GenericStyleProps } from '@/utils';
 import React, { useState, useEffect, useRef } from 'react';
+import { isMobile } from 'react-device-detect';
 import * as S from './card.styles';
 
 type Props = {
@@ -33,7 +34,7 @@ export const Card: React.FC<Props & GenericStyleProps> = ({
   const cardRef = useRef<HTMLFormElement | null>(null);
 
   const smoothScrollIntoView = (element?: HTMLElement | null) => {
-    element?.scrollIntoView({
+    element?.scrollIntoView(isMobile ? true :{
       behavior: 'smooth',
       block: 'start',
       inline: 'nearest',
