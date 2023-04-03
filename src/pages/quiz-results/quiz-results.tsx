@@ -60,8 +60,8 @@ const createResultTables = (alphabet: string[], answers: QuizAnswers) => {
 const QuizResultsPage: React.FC<Props> = ({
   onClickHome,
   onClickQuizAgain,
-  translitData,
-  answers
+  translitData = {},
+  answers = { correct: {}, incorrect: {} }
 }) => {
   const alphabet = Object.keys(translitData);
   const correctCount = Object.values(answers.correct).filter(isCorrect => isCorrect).length;
