@@ -11,7 +11,7 @@ type Props = {
   translitData: TranslitData;
 };
 
-export const QuizCardsPage: React.FC<Props> = ({
+const QuizCardsPage: React.FC<Props> = ({
   onSubmit,
   onClickHome,
   translitData
@@ -150,4 +150,6 @@ export const QuizCardsPage: React.FC<Props> = ({
 
     </S.QuizCardsPage>
   )
-}
+};
+
+export default QuizCardsPage;

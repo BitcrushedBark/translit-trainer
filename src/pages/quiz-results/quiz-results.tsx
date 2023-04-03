@@ -57,7 +57,7 @@ const createResultTables = (alphabet: string[], answers: QuizAnswers) => {
   return tables;
 }
 
-export const QuizResultsPage: React.FC<Props> = ({
+const QuizResultsPage: React.FC<Props> = ({
   onClickHome,
   onClickQuizAgain,
   translitData,
@@ -93,4 +93,6 @@ export const QuizResultsPage: React.FC<Props> = ({
 
     </S.QuizResultsPage>
   )
-}
+};
+
+export default QuizResultsPage;

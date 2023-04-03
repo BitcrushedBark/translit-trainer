@@ -1,1 +1,1 @@
-export { QuizCardsPage as default } from './quiz-cards';
+export { default } from './quiz-cards';

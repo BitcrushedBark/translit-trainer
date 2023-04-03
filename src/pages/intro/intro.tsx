@@ -22,7 +22,7 @@ type Props = {
   onTranslitDataChange: (data: TranslitData) => void;
 };
 
-export const IntroPage: React.FC<Props> = ({
+const IntroPage: React.FC<Props> = ({
   onStartQuiz,
   onTranslitDataChange
 }) => {
@@ -165,4 +165,6 @@ export const IntroPage: React.FC<Props> = ({
 
     </S.IntroPage>
   )
-}
+};
+
+export default IntroPage;
