@@ -78,12 +78,12 @@ export const Card = styled.form<CardProps & GenericStyleProps>`
 
   ${({ isMobile }) => isMobile ? 'scroll-margin-top: 30px;' : ''}
 
-  ${({ isActive, isMobile }) => isActive && css`
+  ${({ isActive, isMobile }) => isActive && `
     transform: scale(1.1);
     background-color: #1d689e;
     border-color: #1d689e;
     outline-color: #268bd2;
-    ${isMobile ? '' : `animation: ${grow} .5s 1;`};
+    ${isMobile ? '' : css`animation: ${grow} .5s 1;`};
   `}
 
   ${({ isCorrect }) => isCorrect && css`
@@ -91,8 +91,8 @@ export const Card = styled.form<CardProps & GenericStyleProps>`
     border-color: #80c9a9;
   `}
 
-  ${({ isWrong, isMobile }) => isWrong && css`
-    ${isMobile ? '' : `animation: ${errorShake} 1s linear 1;`};
+  ${({ isWrong, isMobile }) => isWrong && `
+    ${isMobile ? '' : css`animation: ${errorShake} 1s linear 1;`};
     background-color: #5783a2;
     border-color: #5783a2;
   `}
