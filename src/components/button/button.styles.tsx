@@ -24,7 +24,11 @@ export const pulse = keyframes`
   }
 }`;
 
-export const Button = styled.button<GenericStyleProps>`
+export interface ButtonProps {
+  isDisabled?: boolean;
+}
+
+export const Button = styled.button<ButtonProps & GenericStyleProps>`
   border-radius: 4px;
   border: 1px solid #268bd2;
   width: 10rem;
@@ -57,7 +61,9 @@ export const Button = styled.button<GenericStyleProps>`
     transform: translateY(.5rem);
   }
 
-  &:disabled {
+  ${({ isDisabled }) => isDisabled ? `
+    pointer-events: none;
+    user-select: none;
     cursor: not-allowed;
     color: #b3b3b3;
     border: 1px solid #f2f2f2;
@@ -75,7 +81,7 @@ export const Button = styled.button<GenericStyleProps>`
       outline: none;
       animation: none;
     }
-  }
+  `: ''}
 
   ${(props) => applyGenericStyleProps(props)}
 `;

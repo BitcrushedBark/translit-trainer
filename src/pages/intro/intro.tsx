@@ -31,9 +31,7 @@ const IntroPage: React.FC<Props> = ({
   const [presetName, setPresetName] = useState<PresetName | null>(null);
 
   useEffect(() => {
-    onTranslitDataChange?.(null);
     window.scrollTo(0, 0);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -115,7 +113,7 @@ const IntroPage: React.FC<Props> = ({
           </SpeechBubble>
           
           <Container mb='2rem'>
-            <Button onClick={onStartQuiz} disabled={!data || !Object.keys(data).length}>Start quiz</Button>
+            <Button onClick={onStartQuiz} isDisabled={!data}>Start quiz</Button>
           </Container>
 
           <Container flexDirection='column'>

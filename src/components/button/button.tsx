@@ -4,17 +4,17 @@ import * as S from './button.styles';
 
 type Props = {
   children: ReactNode;
-  disabled?: boolean;
+  isDisabled?: boolean;
   onClick?: () => void;
 };
 
 export const Button: React.FC<Props & GenericStyleProps> = ({
   children,
-  disabled,
+  isDisabled,
   onClick
 }) => {
   return (
-    <S.Button onClick={onClick} disabled={disabled} tabIndex={0}>
+    <S.Button onClick={onClick} isDisabled={isDisabled} tabIndex={0}>
       {children}
     </S.Button>
   )

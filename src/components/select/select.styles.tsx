@@ -68,6 +68,7 @@ export const Select = styled.select<GenericStyleProps>`
 export const Option = styled.option<GenericStyleProps>`
   font-size: 1rem;
   color: #268bd2;
+  text-align: right;
 
   ${(props) => applyGenericStyleProps(props)}
 `;
