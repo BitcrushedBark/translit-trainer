@@ -43,6 +43,9 @@ const IntroPage: React.FC<Props> = ({
     }
   }, [data, onTranslitDataChange]);
 
+  console.log('Data is:');
+  console.log(data);
+
   useEffect(() => {
     setData(translitDataPresets[presetName as PresetName]);
   }, [presetName]);
