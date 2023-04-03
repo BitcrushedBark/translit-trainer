@@ -19,7 +19,7 @@ import { translitDataPresets } from '@/data';
 
 type Props = {
   onStartQuiz: () => void;
-  onTranslitDataChange: (data: TranslitData) => void;
+  onTranslitDataChange: (data: TranslitData | null) => void;
 };
 
 const IntroPage: React.FC<Props> = ({
@@ -31,9 +31,9 @@ const IntroPage: React.FC<Props> = ({
   const [presetName, setPresetName] = useState<PresetName | null>(null);
 
   useEffect(() => {
-    setData(null);
-    setPresetName(null);
+    onTranslitDataChange?.(null);
     window.scrollTo(0, 0);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

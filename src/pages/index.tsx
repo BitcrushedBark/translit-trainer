@@ -23,10 +23,6 @@ export default function Home() {
     setQuizAnswers(null);
   };
 
-  useEffect(() => {
-    resetAll();
-  }, []);
-
   return (
     <>
       <Head>
