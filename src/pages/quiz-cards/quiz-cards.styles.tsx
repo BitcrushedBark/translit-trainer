@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Page } from '@/components';
 
-export const QuizCardsPage = styled(Page)`
+const StyledQuizCardsPage = styled(Page)`
 
 `;
+
+export default StyledQuizCardsPage;

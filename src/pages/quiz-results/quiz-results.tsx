@@ -12,7 +12,7 @@ import {
   TH,
   TD,
 } from '@/components';
-import * as S from './quiz-results.styles';
+import StyledQuizResultsPage from './quiz-results.styles';
 
 type Props = {
   onClickHome: () => void;
@@ -73,7 +73,7 @@ const QuizResultsPage: React.FC<Props> = ({
   }, []);
 
   return (
-    <S.QuizResultsPage>
+    <StyledQuizResultsPage>
 
         <Container flexDirection='column'>
           <Header>View Your Results</Header>
@@ -91,7 +91,7 @@ const QuizResultsPage: React.FC<Props> = ({
           <Button onClick={onClickQuizAgain}>Quiz again</Button>
         </Container>
 
-    </S.QuizResultsPage>
+    </StyledQuizResultsPage>
   )
 };
 

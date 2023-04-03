@@ -3,7 +3,7 @@ import type { QuizAnswers, TranslitData } from '@/types';
 import React, { useEffect, useState } from 'react';
 import { Button, SpeechBubble, Container, Card, Header, List, ListItem } from '@/components';
 import { getRandomNumber } from '@/utils';
-import * as S from './quiz-cards.styles';
+import StyledQuizCardsPage from './quiz-cards.styles';
 
 type Props = {
   onSubmit: (answers: QuizAnswers) => void;
@@ -105,7 +105,7 @@ const QuizCardsPage: React.FC<Props> = ({
   };
 
   return (
-    <S.QuizCardsPage>
+    <StyledQuizCardsPage>
       
       <Container flexDirection='column' pb='2rem'>
         <Header>{`Type transliterations for the letters you know`}</Header>
@@ -148,7 +148,7 @@ const QuizCardsPage: React.FC<Props> = ({
         <Button onClick={confirmFinishQuiz}>Finish quiz</Button>
       </Container>
 
-    </S.QuizCardsPage>
+    </StyledQuizCardsPage>
   )
 };
 

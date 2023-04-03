@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import { Page } from '@/components';
 
-export const IntroPage = styled(Page)`
+const StyledIntroPage = styled(Page)`
 
 `;
+
+export default StyledIntroPage;
+

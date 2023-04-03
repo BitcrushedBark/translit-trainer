@@ -2,11 +2,12 @@ import type { QuizAnswers, TranslitData } from '@/types';
 import { useState } from 'react';
 import Head from 'next/head';
 import { robotoCondensed } from '@/utils';
-import * as S from './home.styles';
 import IntroPage from './intro';
 import QuizCardsPage from './quiz-cards';
 import QuizResultsPage from './quiz-results';
 import { Footer } from '@/components';
+import StyledHome from './home.styles';
+import StyledHomeBorder from './home-border.styles';
 
 export default function Home() {
   const [quizAnswers, setQuizAnswers] = useState<QuizAnswers | null>(null);
@@ -37,8 +38,8 @@ export default function Home() {
         <meta name="theme-color" content="#ffffff" />
       </Head>
 
-      <S.Home className={robotoCondensed.className}>
-        <S.HomeBorder>
+      <StyledHome className={robotoCondensed.className}>
+        <StyledHomeBorder>
           {
             !isQuizStarted ?
             <>
@@ -69,8 +70,8 @@ export default function Home() {
               /> :
               null
           }
-        </S.HomeBorder>
-      </S.Home>
+        </StyledHomeBorder>
+      </StyledHome>
     </>
   )
 }

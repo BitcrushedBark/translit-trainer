@@ -14,7 +14,7 @@ import {
   Select,
   JsonBlock
 } from '@/components';
-import * as S from './intro.styles';
+import StyledIntroPage from './intro.styles';
 import { translitDataPresets } from '@/data';
 
 type Props = {
@@ -93,7 +93,7 @@ const IntroPage: React.FC<Props> = ({
   };
 
   return (
-    <S.IntroPage>
+    <StyledIntroPage>
 
       <Container>
         <Header>Translit Trainer</Header>
@@ -163,7 +163,7 @@ const IntroPage: React.FC<Props> = ({
 
         </Container>
 
-    </S.IntroPage>
+    </StyledIntroPage>
   )
 };
 
