@@ -101,6 +101,7 @@ export const Card: React.FC<Props & GenericStyleProps> = ({
       isActive={isActive && !isCorrect}
       isCorrect={isCorrect}
       isWrong={isWrong}
+      isMobile={isMobile}
     >
       <S.CardText>{text}</S.CardText>
       <S.CardInput

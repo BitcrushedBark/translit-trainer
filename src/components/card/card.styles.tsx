@@ -5,6 +5,7 @@ interface CardProps {
   isActive?: boolean;
   isCorrect?: boolean;
   isWrong?: boolean;
+  isMobile?: boolean;
 }
 
 const grow = keyframes`
@@ -74,6 +75,8 @@ export const Card = styled.form<CardProps & GenericStyleProps>`
   outline: 1px solid #1d689e;
   outline-offset: -7px;
   scroll-margin-top: 15px;
+
+  ${({ isMobile }) => isMobile ? 'scroll-margin-top: 30px;' : ''}
 
   ${({ isActive }) => isActive && css`
     transform: scale(1.1);
