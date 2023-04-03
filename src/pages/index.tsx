@@ -12,7 +12,7 @@ import StyledHomeBorder from './home-border.styles';
 export default function Home() {
   const [quizAnswers, setQuizAnswers] = useState<QuizAnswers | null>(null);
   const [isQuizStarted, setIsQuizStarted] = useState(false);
-  const [translitData, setTranslitData] = useState<TranslitData>();
+  const [translitData, setTranslitData] = useState<TranslitData | null>(null);
 
   const resetAll = () => {
     setQuizAnswers(null);

@@ -43,9 +43,6 @@ const IntroPage: React.FC<Props> = ({
     }
   }, [data, onTranslitDataChange]);
 
-  console.log('Data is:');
-  console.log(data);
-
   useEffect(() => {
     if (presetName) {
       setData(translitDataPresets[presetName as PresetName]);
@@ -118,7 +115,7 @@ const IntroPage: React.FC<Props> = ({
           </SpeechBubble>
           
           <Container mb='2rem'>
-            <Button onClick={onStartQuiz} disabled={!data}>Start quiz</Button>
+            <Button onClick={onStartQuiz} disabled={!data || !Object.keys(data).length}>Start quiz</Button>
           </Container>
 
           <Container flexDirection='column'>
