@@ -32,6 +32,7 @@ const IntroPage: React.FC<Props> = ({
 
   useEffect(() => {
     setData(null);
+    setPresetName(null);
     window.scrollTo(0, 0);
   }, []);
 
