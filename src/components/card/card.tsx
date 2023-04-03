@@ -98,7 +98,6 @@ export const Card: React.FC<Props & GenericStyleProps> = ({
       key={text}
       ref={cardRef}
       onClick={onSelect}
-      onTouchStart={onSelect}
       isActive={isActive && !isCorrect}
       isCorrect={isCorrect}
       isWrong={isWrong}
