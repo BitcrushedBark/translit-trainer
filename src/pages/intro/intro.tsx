@@ -47,7 +47,9 @@ const IntroPage: React.FC<Props> = ({
   console.log(data);
 
   useEffect(() => {
-    setData(translitDataPresets[presetName as PresetName]);
+    if (presetName) {
+      setData(translitDataPresets[presetName as PresetName]);
+    }
   }, [presetName]);
 
   const onFileInputClick = () => {
