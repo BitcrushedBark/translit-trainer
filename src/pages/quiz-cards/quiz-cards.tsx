@@ -143,7 +143,7 @@ const QuizCardsPage: React.FC<Props> = ({
         ))}
       </Container>
       
-      <Container>
+      <Container rowGap='1rem'>
         <Button onClick={onClickHome}>Home</Button>
         <Button onClick={confirmFinishQuiz}>Finish quiz</Button>
       </Container>

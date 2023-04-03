@@ -6,6 +6,7 @@ export interface ContainerProps {
   alignItems?: 'center' | 'stretch' | 'flex-start' | 'flex-end' | 'baseline' | 'initial' | 'inherit';
   justifyContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'initial' | 'inherit';
   opacity?: string;
+  rowGap?: string;
 }
 
 export const Container = styled.div<ContainerProps & GenericStyleProps>`
@@ -21,7 +22,7 @@ export const Container = styled.div<ContainerProps & GenericStyleProps>`
   ${({ alignItems }) => alignItems ? `align-items: ${alignItems}` : ''};
   ${({ justifyContent }) => justifyContent ? `justify-content: ${justifyContent}` : ''};
   ${({ opacity }) => opacity ? `opacity: ${opacity}` : ''};
-
+  ${({ rowGap }) => rowGap ? `row-gap: ${rowGap}` : ''};
 
   ${(props) => applyGenericStyleProps(props)}
 `;

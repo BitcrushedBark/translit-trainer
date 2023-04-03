@@ -86,7 +86,7 @@ const QuizResultsPage: React.FC<Props> = ({
           {createResultTables(alphabet, answers)}
         </Container>
 
-        <Container>
+        <Container rowGap='1rem'>
           <Button onClick={onClickHome}>Home</Button>
           <Button onClick={onClickQuizAgain}>Quiz again</Button>
         </Container>
