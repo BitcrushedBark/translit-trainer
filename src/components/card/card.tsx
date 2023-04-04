@@ -46,7 +46,7 @@ export const Card: React.FC<Props & GenericStyleProps> = ({
     if (isActive && !isCorrect) {
       inputRef.current?.focus();
       if (enableAutoscroll) {
-        scrollIntoView();
+        setTimeout(() => scrollIntoView(), 0);
       }
     } else if (!isActive) {
       onDeselect?.();

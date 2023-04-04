@@ -42,9 +42,7 @@ const IntroPage: React.FC<Props> = ({
   }, [data, onTranslitDataChange]);
 
   useEffect(() => {
-    if (presetName) {
-      setData(translitDataPresets[presetName as PresetName]);
-    }
+    setData(translitDataPresets[presetName as PresetName]);
   }, [presetName]);
 
   const onFileInputClick = () => {
