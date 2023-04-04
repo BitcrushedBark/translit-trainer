@@ -104,7 +104,7 @@ export const Card: React.FC<Props & GenericStyleProps> = ({
       isWrong={isWrong}
       isMobile={isMobile}
     >
-      <S.ScrollAnchor ref={scrollAnchorRef} />
+      <S.ScrollAnchor ref={scrollAnchorRef} isMobile={isMobile} />
       <S.CardText>{text}</S.CardText>
       <S.CardInput
         type="text"

@@ -134,9 +134,9 @@ export const CardInput = styled.input<GenericStyleProps>`
   ${(props) => applyGenericStyleProps(props)}
 `;
 
-export const ScrollAnchor = styled.div`
+export const ScrollAnchor = styled.div<Pick<CardProps, 'isMobile'>>`
   position: absolute;
   top: 0;
-  scroll-margin-top: 30px;
+  scroll-margin-top: ${({ isMobile }) => isMobile ? '60px' : '30px'};
 `;
 
