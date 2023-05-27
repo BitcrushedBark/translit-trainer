@@ -125,7 +125,7 @@ const QuizCardsPage: React.FC<Props> = ({
 
     if (shouldSubmit) {
       setIsQuizFinished(true);
-      window.scrollTo(0, 0);
+      setTimeout(() => window.scrollTo(0, 0), 0.5);
     }
   }, [hasIncompleteAnswers]);
 
