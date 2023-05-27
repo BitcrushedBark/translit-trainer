@@ -57,7 +57,7 @@ const QuizCardsPage: React.FC<Props> = ({
     setFlippingCards([]);
     setRandomizedAlphabet([...Object.keys(translitData)].sort(getRandomNumber));
     setActiveIndex(0);
-    setIsQuizFinished(false);
+    setTimeout(() => setIsQuizFinished(false), 0.5);
   }, [translitData]);
 
   const proceedToNextCard = (letter: string, isCorrect: boolean) => {
@@ -192,7 +192,7 @@ const QuizCardsPage: React.FC<Props> = ({
           <Card
             key={letter}
             text={letter}
-            attempts={incorrectAnswers[letter]}
+            attempts={incorrectAnswers[letter] || 0}
             onAnswer={validateAnswer}
             onSelect={() => setActiveIndex(index)}
             onDeselect={index === 0 ? () => setEnableAutoscroll(true) : () => null}
