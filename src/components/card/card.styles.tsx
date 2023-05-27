@@ -187,8 +187,7 @@ export const CardAnswerCounter = styled.div<{
   position: absolute;
   left: 0;
   top: 0;
-  padding: 1rem;
-  line-height: 1;
+  padding: 0.5rem 0.8rem;
   text-align: center;
   color: #fdfdfd;
   font-size: 1rem;
