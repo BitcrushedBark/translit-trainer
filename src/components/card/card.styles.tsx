@@ -103,7 +103,7 @@ export const CardWrapper = styled.div<CardProps & GenericStyleProps>`
 export const Card = styled.form<CardProps & GenericStyleProps>`
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   background-color: #268bd2;
   color: #fdfdfd;
@@ -184,6 +184,12 @@ export const CardAnswerCounter = styled.div<{
   isShowingBack?: boolean;
   isFlipping?: boolean;
 } & GenericStyleProps>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.8rem 0.5rem;
+  margin: 0;
+  line-height: 0;
   color: #fdfdfd;
   font-size: 1rem;
   font-weight: bold;
@@ -204,6 +210,7 @@ export const CardText = styled.span<CardProps & {
   isPlaceholder?: boolean;
 } & GenericStyleProps>`
   text-align: center;
+  margin: 2rem;
   border-radius: 4px;
   overflow: hidden;
   max-width: 100%;
