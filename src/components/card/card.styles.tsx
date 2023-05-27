@@ -158,6 +158,7 @@ export const Card = styled.form<CardProps & GenericStyleProps>`
 export const CardRotateIcon = styled.div<{
   isVisible?: boolean
 } & GenericStyleProps>`
+  font-family: 'Roboto Condensed', Arial, sans-serif;
   position: absolute;
   right: 0;
   top: 0;
