@@ -6,6 +6,7 @@ import * as S from './card.styles';
 
 type Props = {
   text: string;
+  attempts?: number;
   onAnswer?: (
     event: FocusEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
     text: string
@@ -15,21 +16,40 @@ type Props = {
   isActive?: boolean;
   isCorrect?: boolean;
   isWrong?: boolean;
+  isDisabled?: boolean;
   enableAutoscroll?: boolean;
+  cardBackText?: string;
+  inputValue?: string | null;
+  setInputValue: (value: string | null) => void;
+  prevInputValue?: string | null;
+  setPrevInputValue: (prevValue: string | null) => void;
+  isShowingBack?: boolean;
+  setIsShowingBack: (isShowingBack: boolean) => void;
+  isFlipping?: boolean;
+  setIsFlipping: (isFlipping: boolean) => void;
 };
 
 export const Card: React.FC<Props & GenericStyleProps> = ({
   text,
+  attempts,
   onAnswer,
   onSelect,
   onDeselect,
   isActive,
   isCorrect,
   isWrong,
-  enableAutoscroll
+  isDisabled,
+  cardBackText,
+  enableAutoscroll,
+  inputValue = null,
+  setInputValue,
+  prevInputValue = null,
+  setPrevInputValue,
+  isShowingBack = false,
+  setIsShowingBack,
+  isFlipping = false,
+  setIsFlipping
 }) => {
-  const [inputValue, setInputValue] = useState<string | null>(null);
-  const [prevInputValue, setPrevInputValue] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const cardRef = useRef<HTMLFormElement | null>(null);
   const scrollAnchorRef = useRef<HTMLDivElement | null>(null);
@@ -95,28 +115,60 @@ export const Card: React.FC<Props & GenericStyleProps> = ({
   };
 
   return (
-    <S.Card
-      key={text}
-      ref={cardRef}
-      onClick={onSelect}
-      isActive={isActive && !isCorrect}
-      isCorrect={isCorrect}
-      isWrong={isWrong}
-      isMobile={isMobile}
-    >
-      <S.ScrollAnchor ref={scrollAnchorRef} isMobile={isMobile} />
-      <S.CardText>{text}</S.CardText>
-      <S.CardInput
-        type="text"
-        value={inputValue || ''}
-        placeholder={prevInputValue || ''}
-        ref={inputRef}
-        disabled={isCorrect}
-        onChange={handleInputChange}
-        onFocus={onSelect}
-        onBlur={(event) => submitAnswer(event, text)}
-        onKeyDown={onInputKeyDown}
-      />
-    </S.Card>
+    <S.CardWrapper
+      isFlipping={isFlipping}
+      isShowingBack={isShowingBack}
+      onAnimationEnd={() => {
+        setIsFlipping(false);
+      }
+    }>
+      <S.Card
+        key={text}
+        ref={cardRef}
+        onClick={onSelect}
+        isActive={isActive && !isCorrect}
+        isCorrect={isCorrect}
+        hasIncorrectAttempts={Boolean(attempts && attempts > 0)}
+        isWrong={isWrong}
+        isMobile={isMobile}
+        isDisabled={isDisabled}
+      >
+        <S.ScrollAnchor ref={scrollAnchorRef} isMobile={isMobile} />
+        
+        <S.CardText
+          isDisabled={isDisabled}
+          isFlipping={isFlipping}
+          isPlaceholder={!cardBackText && isShowingBack}
+          isShowingBack={isShowingBack}
+          title={isShowingBack ? cardBackText || '(empty)' : text}
+        >{
+          isShowingBack ? (cardBackText ?? '∅') : text
+        }</S.CardText>
+
+        {isShowingBack ? null :<S.CardInput
+          type="text"
+          value={isDisabled && !attempts && !isCorrect ? '—' : inputValue || ''}
+          placeholder={prevInputValue || ''}
+          ref={inputRef}
+          disabled={isCorrect || isDisabled}
+          onChange={handleInputChange}
+          onFocus={onSelect}
+          onBlur={(event) => submitAnswer(event, text)}
+          onKeyDown={onInputKeyDown}
+          isFlipping={isFlipping}
+        />}
+        
+        <S.CardAnswerCounter isShowingBack={isShowingBack} isFlipping={isFlipping}>{
+          prevInputValue ? (attempts ? `${attempts > 1000 ? 'Many' : attempts}✘` : '✓') : ''
+        }</S.CardAnswerCounter>
+      </S.Card>
+      <S.CardRotateIcon
+        isVisible={isDisabled}
+        onClick={() => {
+          setIsFlipping(true);
+          setIsShowingBack(!isShowingBack);
+        }}
+      >⮯</S.CardRotateIcon>
+    </S.CardWrapper>
   )
 }

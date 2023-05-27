@@ -9,7 +9,7 @@ const flipIn = keyframes`
   to {
     opacity: 1;
   }
-}`;
+`;
 
 export const JsonBlock = styled.div<GenericStyleProps>`
   font-size: 1rem;

@@ -22,7 +22,7 @@ export const pulse = keyframes`
     box-shadow: 0 .5rem #e6f6ff;
     border-radius: 4px;
   }
-}`;
+`;
 
 export interface ButtonProps {
   isDisabled?: boolean;

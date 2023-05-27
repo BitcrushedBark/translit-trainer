@@ -6,6 +6,10 @@ interface CardProps {
   isCorrect?: boolean;
   isWrong?: boolean;
   isMobile?: boolean;
+  isDisabled?: boolean;
+  isFlipping?: boolean;
+  isShowingBack?: boolean;
+  hasIncorrectAttempts?: boolean;
 }
 
 const grow = keyframes`
@@ -54,6 +58,47 @@ const errorShake = keyframes`
   }
 `;
 
+const foldCorner = keyframes`
+  0% { clip-path: polygon(0 0,100% 0,100% 0,100% 100%,0 100%); }
+  100% { clip-path: polygon(0 0,calc(100% - 2.00rem) 0,100% 2.00rem,100% 100%,0 100%); }
+`;
+
+const flipIn = (finalOpacity = 1) => keyframes`
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: ${finalOpacity};
+  }
+`;
+
+const flipHorizontally = keyframes`
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(180deg); }
+`;
+
+export const CardWrapper = styled.div<CardProps & GenericStyleProps>`
+  width: 10rem;
+  min-width: 10rem;
+  height: 15rem;
+  margin: .5rem;
+  position: relative;
+
+  ${({ isFlipping, isShowingBack }) => isFlipping && css`
+    animation: ${flipHorizontally} 0.4s;
+    animation-direction: ${isShowingBack ? 'forward' : 'reverse'};
+    animation-fill-mode: forwards;
+  `}
+
+  ${({ isShowingBack }) => isShowingBack && css`
+    transform: rotateY(180deg);
+  `}
+`;
+
 export const Card = styled.form<CardProps & GenericStyleProps>`
   display: flex;
   flex-direction: column;
@@ -62,19 +107,18 @@ export const Card = styled.form<CardProps & GenericStyleProps>`
   background-color: #268bd2;
   color: #fdfdfd;
   transition: all 0.3s ease-in-out;
-  cursor: pointer;
   border: .3rem solid #268bd2;
   border-radius: 4px;
-  width: 8rem;
   padding: 1rem;
-  margin: .5rem;
   font-size: 4rem;
   text-align: center;
   scroll-margin-top: 1rem;
-  min-width: 10rem;
   outline: 1px solid #1d689e;
   outline-offset: -7px;
   position: relative;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
 
   ${({ isMobile }) => isMobile ? 'scroll-margin-top: 30px;' : ''}
 
@@ -88,13 +132,22 @@ export const Card = styled.form<CardProps & GenericStyleProps>`
     `};
   `}
 
-  ${({ isCorrect }) => isCorrect && css`
-    background-color: #80c9a9;
-    border-color: #80c9a9;
+  ${({ hasIncorrectAttempts, isMobile }) => hasIncorrectAttempts && css`
+    ${isMobile ? '' : css`animation: ${errorShake} 1s linear 1;`};
   `}
 
-  ${({ isWrong, isMobile }) => isWrong && css`
-    ${isMobile ? '' : css`animation: ${errorShake} 1s linear 1;`};
+  ${({ isDisabled }) => isDisabled && css`
+    cursor: default;
+    animation: ${foldCorner} 0.5s;
+    animation-fill-mode: forwards;
+  `}
+
+  ${({ isCorrect, hasIncorrectAttempts }) => isCorrect && `
+    background-color: ${hasIncorrectAttempts ? '#e3bf5b' : '#80c9a9'};
+    border-color: ${hasIncorrectAttempts ? '#e3bf5b' : '#80c9a9'};
+  `}
+
+  ${({ isWrong }) => isWrong && `
     background-color: #5783a2;
     border-color: #5783a2;
   `}
@@ -102,21 +155,86 @@ export const Card = styled.form<CardProps & GenericStyleProps>`
   ${(props) => applyGenericStyleProps(props)}
 `;
 
-export const CardText = styled.span<GenericStyleProps>`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+export const CardRotateIcon = styled.div<{
+  isVisible?: boolean
+} & GenericStyleProps>`
+  position: absolute;
+  right: 0;
+  top: 0;
+  line-height: 1;
+  text-align: center;
+  color: #fdfdfd;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #1d689e;
+  font-size: 3rem;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  visibility: hidden;
+  user-select: none;
+
+  ${({ isVisible }) => isVisible && css`
+    animation: ${flipIn()} 1s;
+    animation-fill-mode: forwards;
+  `}
+`;
+
+export const CardAnswerCounter = styled.div<{
+  isShowingBack?: boolean;
+  isFlipping?: boolean;
+} & GenericStyleProps>`
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 1rem;
+  line-height: 1;
+  text-align: center;
+  color: #fdfdfd;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  opacity: 0.5;
+
+  ${({ isFlipping }) => isFlipping && css`
+    animation: ${flipIn(0.5)} 0.4s;
+    animation-fill-mode: forwards;
+  `}
+
+  ${({ isShowingBack }) => isShowingBack && css`
+    animation: none;
+    opacity: 0;
+  `}
+`;
+
+export const CardText = styled.span<CardProps & {
+  isPlaceholder?: boolean;
+} & GenericStyleProps>`
   text-align: center;
   margin: 2rem;
   border-radius: 4px;
   overflow: hidden;
   max-width: 100%;
+  text-overflow: ellipsis;
+  width: 100%;
+  min-width: 0;
+
+  ${({ isDisabled }) => isDisabled ? 'cursor: default;' : 'cursor: pointer;'}
+
+  ${({ isFlipping }) => isFlipping && css`
+    animation: ${flipIn()} 0.4s;
+    animation-fill-mode: forwards;
+  `}
+
+  ${({ isShowingBack, isPlaceholder }) => isShowingBack && `
+    transform: rotateY(180deg);
+    font-weight: 800;
+    ${isPlaceholder ? '' : 'font-size: 1.2rem;'}
+  `}
 
   ${(props) => applyGenericStyleProps(props)}
 `;
 
-export const CardInput = styled.input<GenericStyleProps>`
+export const CardInput = styled.input<CardProps & GenericStyleProps>`
   font-size: 1.5rem;
   padding: 0.5rem;
   text-align: center;
@@ -130,6 +248,11 @@ export const CardInput = styled.input<GenericStyleProps>`
   border-radius: 4px;
   border-color: #fdfdfd;
   border-style: none;
+
+  ${({ isFlipping }) => isFlipping && css`
+    animation: ${flipIn()} 0.4s;
+    animation-fill-mode: forwards;
+  `}
 
   ${(props) => applyGenericStyleProps(props)}
 `;

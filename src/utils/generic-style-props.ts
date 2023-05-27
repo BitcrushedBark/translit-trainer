@@ -8,6 +8,7 @@ export interface GenericStyleProps {
   mt?: string;
   mb?: string;
   fontSize?: string;
+  width?: string;
 }
 
 export const applyGenericStyleProps = (props: GenericStyleProps) => `
@@ -20,4 +21,5 @@ export const applyGenericStyleProps = (props: GenericStyleProps) => `
   ${props.mt ? `margin-top: ${props.mt}` : ''};
   ${props.mb ? `margin-bottom: ${props.mb}` : ''};
   ${props.fontSize ? `font-size: ${props.fontSize}` : ''};
+  ${props.width ? `width: ${props.width}` : ''};
 `;

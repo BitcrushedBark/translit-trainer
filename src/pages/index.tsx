@@ -1,26 +1,19 @@
-import type { QuizAnswers, TranslitData } from '@/types';
-import { useState, useEffect } from 'react';
+import type { TranslitData } from '@/types';
+import { useState } from 'react';
 import Head from 'next/head';
 import { robotoCondensed } from '@/utils';
 import IntroPage from './intro';
 import QuizCardsPage from './quiz-cards';
-import QuizResultsPage from './quiz-results';
 import { Footer } from '@/components';
 import StyledHome from './home.styles';
 import StyledHomeBorder from './home-border.styles';
 
 export default function Home() {
-  const [quizAnswers, setQuizAnswers] = useState<QuizAnswers | null>(null);
   const [isQuizStarted, setIsQuizStarted] = useState(false);
   const [translitData, setTranslitData] = useState<TranslitData | null>(null);
 
   const resetAll = () => {
-    setQuizAnswers(null);
     setIsQuizStarted(false);
-  };
-
-  const resetQuizResults = () => {
-    setQuizAnswers(null);
   };
 
   return (
@@ -52,22 +45,12 @@ export default function Home() {
             null
           }
           {
-            isQuizStarted && !quizAnswers && translitData ? 
+            isQuizStarted && translitData ? 
               <QuizCardsPage
-                onSubmit={setQuizAnswers}
+                onSubmit={() => null}
                 onClickHome={resetAll}
                 translitData={translitData}
               /> : 
-              null
-          }
-          {
-            isQuizStarted && quizAnswers && translitData ?
-              <QuizResultsPage
-                translitData={translitData}
-                answers={quizAnswers}
-                onClickHome={resetAll}
-                onClickQuizAgain={resetQuizResults}
-              /> :
               null
           }
         </StyledHomeBorder>

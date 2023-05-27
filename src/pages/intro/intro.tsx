@@ -22,6 +22,8 @@ type Props = {
   onTranslitDataChange: (data: TranslitData | null) => void;
 };
 
+const presetStorageKey = 'last-selected-preset';
+
 const IntroPage: React.FC<Props> = ({
   onStartQuiz,
   onTranslitDataChange
@@ -32,6 +34,10 @@ const IntroPage: React.FC<Props> = ({
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    const storedPresetName = localStorage.getItem(presetStorageKey);
+    if (storedPresetName && Object.keys(translitDataPresets).includes(storedPresetName)) {
+      setPresetName(storedPresetName as PresetName);
+    }
   }, []);
 
   useEffect(() => {
@@ -43,6 +49,7 @@ const IntroPage: React.FC<Props> = ({
 
   useEffect(() => {
     setData(translitDataPresets[presetName as PresetName]);
+    localStorage.setItem(presetStorageKey, presetName as PresetName);
   }, [presetName]);
 
   const onFileInputClick = () => {

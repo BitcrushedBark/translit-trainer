@@ -7,7 +7,6 @@ export * from './list';
 export * from './speech-bubble';
 export * from './page';
 export * from './file-input';
-export * from './table';
 export * from './select';
 export * from './toggle';
 export * from './json-block';
