@@ -250,16 +250,14 @@ export const CardInput = styled.input<CardProps & GenericStyleProps>`
   border-color: #fdfdfd;
   border-style: none;
 
-  ${({ isVisible }) => isVisible ? '' : 'opacity: 0;'}
-
-  :disabled {
-    background-color: #e7e7e777;
-  }
-
   ${({ isFlipping, isVisible }) => isVisible && isFlipping && css`
-    animation: ${flipIn()} 0.4s;
+    animation: ${flipIn(0.7)} 0.4s;
     animation-fill-mode: forwards;
   `}
+
+  :disabled {
+    opacity: 0.7;
+  }
 
   ${(props) => applyGenericStyleProps(props)}
 `;

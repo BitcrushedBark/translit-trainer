@@ -47,17 +47,17 @@ const QuizCardsPage: React.FC<Props> = ({
   }
 
   const restartQuiz = useCallback(() => {
-    window.scrollTo(0, 0);
-    setRandomizedAlphabet([...Object.keys(translitData)].sort(getRandomNumber));
     setEnableAutoscroll(false);
-    setIsQuizFinished(false);
+    window.scrollTo(0, 0);
     setCorrectAnswers({});
     setIncorrectAnswers({});
     setCardInputValues([]);
     setCardPrevInputValues([]);
     setFlippedCards([]);
     setFlippingCards([]);
-    setTimeout(() => setActiveIndex(0), 0);
+    setRandomizedAlphabet([...Object.keys(translitData)].sort(getRandomNumber));
+    setActiveIndex(0);
+    setIsQuizFinished(false);
   }, [translitData]);
 
   const proceedToNextCard = (letter: string, isCorrect: boolean) => {
