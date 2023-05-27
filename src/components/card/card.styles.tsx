@@ -257,6 +257,10 @@ export const CardInput = styled.input<CardProps & GenericStyleProps>`
 
   ${({ isVisible }) => isVisible ? '' : 'opacity: 0;'}
 
+  :disabled {
+    background-color: #e7e7e777;
+  }
+
   ${(props) => applyGenericStyleProps(props)}
 `;
 

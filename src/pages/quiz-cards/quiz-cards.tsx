@@ -57,7 +57,7 @@ const QuizCardsPage: React.FC<Props> = ({
     setCardPrevInputValues([]);
     setFlippedCards([]);
     setFlippingCards([]);
-    window.scrollTo(0, 0);
+    setTimeout(() => window.scrollTo(0, 0), 0);
   }, [translitData]);
 
   const proceedToNextCard = (letter: string, isCorrect: boolean) => {
