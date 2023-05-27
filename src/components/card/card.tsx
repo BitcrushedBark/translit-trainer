@@ -146,6 +146,10 @@ export const Card: React.FC<Props & GenericStyleProps> = ({
           isShowingBack ? (cardBackText ?? '∅') : text
         }</S.CardText>
 
+        <S.CardAnswerCounter isShowingBack={isShowingBack} isFlipping={isFlipping}>{
+          prevInputValue ? (attempts ? `${attempts > 1000 ? 'Many' : attempts}✘` : '✓') : ''
+        }</S.CardAnswerCounter>
+
         {isShowingBack ? null :<S.CardInput
           type="text"
           value={isDisabled && !attempts && !isCorrect ? '—' : inputValue || ''}
@@ -159,10 +163,6 @@ export const Card: React.FC<Props & GenericStyleProps> = ({
           isFlipping={isFlipping}
           isVisible={!isShowingBack}
         />}
-        
-        <S.CardAnswerCounter isShowingBack={isShowingBack} isFlipping={isFlipping}>{
-          prevInputValue ? (attempts ? `${attempts > 1000 ? 'Many' : attempts}✘` : '✓') : ''
-        }</S.CardAnswerCounter>
       </S.Card>
       <S.CardRotateIcon
         className={notoSansSymbols2.className}

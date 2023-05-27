@@ -184,10 +184,6 @@ export const CardAnswerCounter = styled.div<{
   isShowingBack?: boolean;
   isFlipping?: boolean;
 } & GenericStyleProps>`
-  position: absolute;
-  left: 0;
-  top: 0;
-  padding: 0.5rem 0.8rem;
   text-align: center;
   color: #fdfdfd;
   font-size: 1rem;
