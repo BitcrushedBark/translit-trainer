@@ -146,7 +146,7 @@ export const Card: React.FC<Props & GenericStyleProps> = ({
           isShowingBack ? (cardBackText ?? '∅') : text
         }</S.CardText>
 
-        {isShowingBack ? null :<S.CardInput
+        <S.CardInput
           type="text"
           value={isDisabled && !attempts && !isCorrect ? '—' : inputValue || ''}
           placeholder={prevInputValue || ''}
@@ -157,7 +157,8 @@ export const Card: React.FC<Props & GenericStyleProps> = ({
           onBlur={(event) => submitAnswer(event, text)}
           onKeyDown={onInputKeyDown}
           isFlipping={isFlipping}
-        />}
+          isVisible={!isShowingBack}
+        />
         
         <S.CardAnswerCounter isShowingBack={isShowingBack} isFlipping={isFlipping}>{
           prevInputValue ? (attempts ? `${attempts > 1000 ? 'Many' : attempts}✘` : '✓') : ''

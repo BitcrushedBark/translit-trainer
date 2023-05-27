@@ -9,6 +9,7 @@ interface CardProps {
   isDisabled?: boolean;
   isFlipping?: boolean;
   isShowingBack?: boolean;
+  isVisible?: boolean;
   hasIncorrectAttempts?: boolean;
 }
 
@@ -249,10 +250,12 @@ export const CardInput = styled.input<CardProps & GenericStyleProps>`
   border-color: #fdfdfd;
   border-style: none;
 
-  ${({ isFlipping }) => isFlipping && css`
+  ${({ isFlipping, isVisible }) => isVisible && isFlipping && css`
     animation: ${flipIn()} 0.4s;
     animation-fill-mode: forwards;
   `}
+
+  ${({ isVisible }) => isVisible ? '' : 'opacity: 0;'}
 
   ${(props) => applyGenericStyleProps(props)}
 `;

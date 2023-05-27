@@ -47,9 +47,9 @@ const QuizCardsPage: React.FC<Props> = ({
   }
 
   const restartQuiz = useCallback(() => {
-    setEnableAutoscroll(false);
     setRandomizedAlphabet([...Object.keys(translitData)].sort(getRandomNumber));
     setActiveIndex(0);
+    setEnableAutoscroll(false);
     setIsQuizFinished(false);
     setCorrectAnswers({});
     setIncorrectAnswers({});
