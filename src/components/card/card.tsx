@@ -135,6 +135,7 @@ export const Card: React.FC<Props & GenericStyleProps> = ({
         isDisabled={isDisabled}
       >
         <S.ScrollAnchor ref={scrollAnchorRef} isMobile={isMobile} />
+
         <S.CardAnswerCounter isShowingBack={isShowingBack} isFlipping={isFlipping}>{
           prevInputValue ? (attempts ? `${attempts > 1000 ? 'Many' : attempts}✘` : '✓') : ''
         }</S.CardAnswerCounter>
