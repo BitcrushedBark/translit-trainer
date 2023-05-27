@@ -187,13 +187,14 @@ export const CardAnswerCounter = styled.div<{
   position: absolute;
   top: 0;
   left: 0;
-  padding: 0.8rem 0.5rem;
+  padding: 0.2rem 0.4rem;
   margin: 0;
-  line-height: 0;
   color: #fdfdfd;
   font-size: 1rem;
   font-weight: bold;
   opacity: 0.5;
+  text-align: left;
+  min-width: 2rem;
 
   ${({ isFlipping }) => isFlipping && css`
     animation: ${flipIn(0.5)} 0.4s;
