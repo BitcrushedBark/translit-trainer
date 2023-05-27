@@ -192,7 +192,7 @@ export const CardAnswerCounter = styled.div<{
   text-align: center;
   color: #fdfdfd;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: bold;
   margin: 0;
   opacity: 0.5;
 
