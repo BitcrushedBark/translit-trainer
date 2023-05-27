@@ -190,6 +190,7 @@ export const CardAnswerCounter = styled.div<{
   font-weight: bold;
   margin: 0;
   opacity: 0.5;
+  background: transparent;
 
   ${({ isFlipping }) => isFlipping && css`
     animation: ${flipIn(0.5)} 0.4s;
