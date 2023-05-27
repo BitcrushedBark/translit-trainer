@@ -1,7 +1,8 @@
 import type { ChangeEvent, FocusEvent, KeyboardEvent } from 'react';
 import { GenericStyleProps } from '@/utils';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { isMobile } from 'react-device-detect';
+import { notoSansSymbols2 } from '@/utils';
 import * as S from './card.styles';
 
 type Props = {
@@ -163,6 +164,7 @@ export const Card: React.FC<Props & GenericStyleProps> = ({
         }</S.CardAnswerCounter>
       </S.Card>
       <S.CardRotateIcon
+        className={notoSansSymbols2.className}
         isVisible={isDisabled}
         onClick={() => {
           setIsFlipping(true);
