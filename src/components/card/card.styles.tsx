@@ -184,18 +184,11 @@ export const CardAnswerCounter = styled.div<{
   isShowingBack?: boolean;
   isFlipping?: boolean;
 } & GenericStyleProps>`
-  position: absolute;
-  left: 0;
-  top: 0;
-  line-height: 0;
-  padding: 1rem 0.5rem;
   text-align: center;
   color: #fdfdfd;
   font-size: 1rem;
   font-weight: 600;
-  margin: 0;
   opacity: 0.5;
-  z-index: 10;
 
   ${({ isFlipping }) => isFlipping && css`
     animation: ${flipIn(0.5)} 0.4s;

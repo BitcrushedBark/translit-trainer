@@ -135,6 +135,9 @@ export const Card: React.FC<Props & GenericStyleProps> = ({
         isDisabled={isDisabled}
       >
         <S.ScrollAnchor ref={scrollAnchorRef} isMobile={isMobile} />
+        <S.CardAnswerCounter isShowingBack={isShowingBack} isFlipping={isFlipping}>{
+          prevInputValue ? (attempts ? `${attempts > 1000 ? 'Many' : attempts}✘` : '✓') : ''
+        }</S.CardAnswerCounter>
         
         <S.CardText
           isDisabled={isDisabled}
@@ -159,9 +162,6 @@ export const Card: React.FC<Props & GenericStyleProps> = ({
           isFlipping={isFlipping}
           isVisible={!isShowingBack}
         />}
-        <S.CardAnswerCounter isShowingBack={isShowingBack} isFlipping={isFlipping}>{
-          prevInputValue ? (attempts ? `${attempts > 1000 ? 'Many' : attempts}✘` : '✓') : ''
-        }</S.CardAnswerCounter>
       </S.Card>
       <S.CardRotateIcon
         className={notoSansSymbols2.className}
